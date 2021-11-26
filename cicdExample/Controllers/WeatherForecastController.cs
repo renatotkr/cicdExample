@@ -22,14 +22,16 @@ namespace cicdExample.Controllers
         public IEnumerable<WeatherForecast> Get()
         {
             var rng = new Random();
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+            for (int i = 0; i < 10; i++)
             {
-                Date = DateTime.Now.AddDays(index),
-                TemperatureC = rng.Next(-20, 55),
-                Summary = Helper.GetDescriptionToLower(rng.Next())
-            })
-            .ToArray();
+                var temp = rng.Next(-20, 40);
+                yield return new WeatherForecast
+                {
+                    Date = DateTime.Now.AddDays(i),
+                    TemperatureC = temp,
+                    Summary = Helper.GetDescriptionToLower(temp)
+                };
+            }
         }
-
     }
 }
