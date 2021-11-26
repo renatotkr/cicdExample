@@ -20,7 +20,8 @@ namespace cicdExample
 
         public static string GetDescriptionToLower(int celsius)
         {
-            return GetDescription(celsius).ToLower();
+            return GetDescription(celsius);
         }
+
     }
 }
